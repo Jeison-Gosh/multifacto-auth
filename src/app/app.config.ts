@@ -2,12 +2,22 @@ import { registerAs } from '@nestjs/config'
 
 import { Utils } from 'src/common/utils/utils';
 
+export const appConfig = registerAs('appConfig', () => {
+    return {
+        port: +process.env.SERVER_PORT                          || 7255,
+        baseUrl: process.env.BASE_URL                           || `http://localhost:3000`,
+        env: process.env.NODE_ENV                               || `development`,
+        logLevel: process.env.LOG_LEVEL                         || `debug`,
+        isDebug: Utils.isDebug(),
+    }
+});
+
 export const apiConfig = registerAs('apiConfig', () => {
     return {
         apiName: process.env.API_NAME                           ||`RP_AUTH`,
         timeout: +process.env.BASE_TIMEOUT                      || 10000,
         payloadLimit: +process.env.BASE_PAYLOAD                 || 10240,
-        protocol: process.env.APP_PROTOCOL                      || `http`,
+        protocol: process.env.SERVER_PROTOCOL                   || `http`,
     }
 });
 
@@ -29,12 +39,12 @@ export const databaseConfig = registerAs('databaseConfig', () => {
 
 export const basicConfig = {
     server: {
-        NAME: process.env.APP_NAME                              || `AuthServer`,
-        HOST: process.env.APP_HOSTNAME                          || `localhost`,
-        PORT: +process.env.APP_PORT                             || 7099,
+        NAME: process.env.SERVER_NAME                           || `AuthServer`,
+        HOST: process.env.SERVER_HOSTNAME                       || `localhost`,
+        PORT: +process.env.SERVER_PORT                          || 7255,
     },
     app: {
-        NAME: process.env.APP_NAME                              || `auth`,
+        NAME: process.env.APP_NAME                              || `MF-Auth`,
         PREFIX: process.env.APP_PREFIX                          || `api`,
         MAX_PAYLOAD: +process.env.APP_PAYLOAD_MAX               || 10240,
         DEFAULT_TIMEOUT: +process.env.BASE_TIMEOUT              || 30000,

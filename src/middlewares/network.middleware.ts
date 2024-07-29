@@ -5,7 +5,7 @@ import { Request, Response, NextFunction } from "express";
 
 import { MA_CONSTANTS } from "src/common/constants/ma.constants";
 import { RESPONSE_MESSAGE } from "src/common/constants/ma.request";
-import { hostHeaderDto } from "src/common/dto/host.request";
+import { hostHeaderDto } from "src/common/dto/host.dto";
 import { Utils } from "src/common/utils/utils";
 
 export class NetworkMiddleware implements NestMiddleware {
