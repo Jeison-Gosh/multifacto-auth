@@ -6,6 +6,8 @@ import { APP_FILTER } from '@nestjs/core';
 import { apiConfig, appConfig, databaseConfig } from './app.config';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { CodesService } from '../codes/codes.service';
+import { CodesModule } from 'src/codes/codes.module';
 
 import { NotFoundFilter } from '../middlewares/notFound.handler';
 import { TimeoutMiddleware } from '../middlewares/timeout.middleware';
@@ -24,6 +26,7 @@ import { HeadersMiddleware } from '../middlewares/headers.middleware';
       isGlobal: true,
     }),
     ScheduleModule.forRoot(),
+    CodesModule
   ],
   controllers: [AppController],
   providers: [
@@ -32,6 +35,7 @@ import { HeadersMiddleware } from '../middlewares/headers.middleware';
       provide: APP_FILTER,
       useClass: NotFoundFilter,
     },
+    CodesService
   ],
 })
 

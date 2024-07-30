@@ -9,7 +9,7 @@ import { Utils } from 'src/common/utils/utils';
 export class HeadersMiddleware implements NestMiddleware {
     async use(req: Request, res: Response, next: NextFunction): Promise<any> {
         try {
-            if (!req.header('Auth') || !req.header('App') || !req.header('Authorization')) {
+            if (!req.header('Accept-Language') || !req.header('App') ) {
                 return res.status(HttpStatus.PRECONDITION_REQUIRED).json({
                     message: RESPONSE_MESSAGE.INVALID_ENTRY
                 });

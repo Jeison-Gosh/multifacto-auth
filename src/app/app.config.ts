@@ -5,7 +5,7 @@ import { Utils } from 'src/common/utils/utils';
 export const appConfig = registerAs('appConfig', () => {
     return {
         port: +process.env.SERVER_PORT                          || 7255,
-        baseUrl: process.env.BASE_URL                           || `http://localhost:3000`,
+        baseUrl: process.env.BASE_URL                           || `http://localhost:7255`,
         env: process.env.NODE_ENV                               || `development`,
         logLevel: process.env.LOG_LEVEL                         || `debug`,
         isDebug: Utils.isDebug(),
@@ -14,7 +14,8 @@ export const appConfig = registerAs('appConfig', () => {
 
 export const apiConfig = registerAs('apiConfig', () => {
     return {
-        apiName: process.env.API_NAME                           ||`RP_AUTH`,
+        apiName: process.env.API_NAME                           || `RP_AUTH`,
+        apiGlobalPrefix: process.env.API_PREFIX                 || `mf-auth-api`,
         timeout: +process.env.BASE_TIMEOUT                      || 10000,
         payloadLimit: +process.env.BASE_PAYLOAD                 || 10240,
         protocol: process.env.SERVER_PROTOCOL                   || `http`,
@@ -37,7 +38,7 @@ export const databaseConfig = registerAs('databaseConfig', () => {
     }
 });
 
-export const basicConfig = {
+export const defaultConfig = {
     server: {
         NAME: process.env.SERVER_NAME                           || `AuthServer`,
         HOST: process.env.SERVER_HOSTNAME                       || `localhost`,
@@ -45,7 +46,7 @@ export const basicConfig = {
     },
     app: {
         NAME: process.env.APP_NAME                              || `MF-Auth`,
-        PREFIX: process.env.APP_PREFIX                          || `api`,
+        PREFIX: process.env.API_PREFIX                          || `api`,
         MAX_PAYLOAD: +process.env.APP_PAYLOAD_MAX               || 10240,
         DEFAULT_TIMEOUT: +process.env.BASE_TIMEOUT              || 30000,
     }
