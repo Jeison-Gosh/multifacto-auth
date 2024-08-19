@@ -1,73 +1,65 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# 📱 **NestJS Multifactor Authentication Application**
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+**Bienvenido a la aplicación de autenticación multifactor basada en NestJS**.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## 🔒 **Descripción**
 
-## Description
+Esta aplicación de NestJS proporciona una **autenticación multifactor** (MFA), mejorando la seguridad de las aplicaciones al requerir múltiples formas de verificación para confirmar la identidad del usuario.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## 🚀 **Características**
 
-## Installation
+- **Autenticación de dos factores (2FA)**: Implementación de autenticación mediante código enviado a correo o SMS.
+- **Autenticación de múltiples factores**: Soporte para varios métodos de autenticación.
+    - **Integración con OAuth**: Compatibilidad con proveedores de OAuth para una autenticación segura.
+- **Protección avanzada de datos**: Encriptación y almacenamiento seguro de datos.
 
-```bash
-$ yarn install
-```
+## 🛠️ **Requisitos**
 
-## Running the app
+- Node.js v20.16.0 superior
+- NestJS v10.3.2  superior
 
-```bash
-# development
-$ yarn run start
+## 📦 **Instalación**
 
-# watch mode
-$ yarn run start:dev
+Sigue estos pasos para configurar el proyecto:
 
-# production mode
-$ yarn run start:prod
-```
+1. Clona el repositorio:
+    ```bash
+    git clone https://github.com/Jeison-Gosh/multifactor-auth
+    ```
+2. Instala las dependencias:
+    ```bash
+    cd nestjs-multifactor-auth
+    npm install
+    ```
+3. Configura las variables de entorno:
+    ```bash
+    cp .env.example .env
+    ```
 
-## Test
+## 💻 **Uso**
 
-```bash
-# unit tests
-$ yarn run test
+1. Inicia el servidor:
+    ```bash
+    npm run start
+    ```
+2. Accede a la aplicación en `http://localhost:3000`.
 
-# e2e tests
-$ yarn run test:e2e
+## 🧑‍💻 **Contribuir**
 
-# test coverage
-$ yarn run test:cov
-```
+¡Las contribuciones son bienvenidas! Por favor, sigue los siguientes pasos:
 
-## Support
+1. Haz un fork del repositorio.
+2. Crea una rama nueva (`git checkout -b feature/nueva-funcionalidad`).
+3. Realiza tus cambios y haz un commit (`git commit -m 'Añadir nueva funcionalidad'`).
+4. Haz push a la rama (`git push origin feature/nueva-funcionalidad`).
+5. Abre un Pull Request.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+## 📄 **Licencia**
 
-## Stay in touch
+Este proyecto está bajo la licencia Copyleft de GNU General Public License (GPL). Para más detalles, consulta el archivo [LICENSE](LICENSE).
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+---
 
-## License
+*Gracias por usar nuestra aplicación de autenticación multifactor con NestJS. ¡Esperamos que encuentres útil este proyecto!*
 
-Nest is [MIT licensed](LICENSE).
+JGosh 😂🚀
