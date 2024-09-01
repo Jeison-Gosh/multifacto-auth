@@ -16,8 +16,8 @@ export const apiConfig = registerAs('apiConfig', () => {
     return {
         apiName: process.env.API_NAME                           || `RP_AUTH`,
         apiGlobalPrefix: process.env.API_PREFIX                 || `mf-auth-api`,
-        timeout: +process.env.BASE_TIMEOUT                      || 10000,
-        payloadLimit: +process.env.BASE_PAYLOAD                 || 10240,
+        timeout: +process.env.API_TIMEOUT                       || 10000,
+        payloadLimit: +process.env.API_PAYLOAD                  || 10240,
         protocol: process.env.SERVER_PROTOCOL                   || `http`,
     }
 });

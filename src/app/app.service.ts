@@ -10,7 +10,5 @@ export class AppService {
     Main.setPort(this.configService.get<number>('appConfig.port'));
     Main.setApiPrefix(this.configService.get<string>('apiConfig.apiGlobalPrefix'));
   }
-  getStatus(): string {
-    return 'Hello World!';
-  }
+
 }

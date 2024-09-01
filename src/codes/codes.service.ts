@@ -7,7 +7,7 @@ export class CodesService {
         this.codes = new Set();
     }
 
-    generateUniqueCode(): string {
+    public generateUniqueCode(): string {
         let code: string;
         do {
             code = this.generateCode();
@@ -20,9 +20,10 @@ export class CodesService {
             return Math.random().toString(36).charAt(2);
         }).join('');
     }
-    consumeCode(): string | null {
+    public consumeCode(): string | null {
         const codeIterator = this.codes.values();
         const code = codeIterator.next().value;
+        
         if (code) {
             this.codes.delete(code);
             return code;
@@ -30,7 +31,7 @@ export class CodesService {
         return null; // No hay más códigos disponibles
     }
 
-    getAllCodes(): string[] {
+    public getAllCodes(): string[] {
         return Array.from(this.codes);
     }
 }

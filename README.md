@@ -29,7 +29,7 @@ Sigue estos pasos para configurar el proyecto:
 2. Instala las dependencias:
     ```bash
     cd nestjs-multifactor-auth
-    npm install
+    yarn install
     ```
 3. Configura las variables de entorno:
     ```bash
@@ -40,9 +40,9 @@ Sigue estos pasos para configurar el proyecto:
 
 1. Inicia el servidor:
     ```bash
-    npm run start
+    yarn start:dev
     ```
-2. Accede a la aplicación en `http://localhost:3000`.
+2. Accede a la aplicación en tu host apuntando a los puertos del .env`http://localhost:3000`.
 
 ## 🧑‍💻 **Contribuir**
 

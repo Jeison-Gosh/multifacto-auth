@@ -8,6 +8,8 @@ import * as bodyParser from 'body-parser';
 
 class Main {
 
+  private static readonly versionApp: string = `v1.0`
+
   private static port: number
   private static apiPrefix: string
   private static server: INestApplication
@@ -15,14 +17,15 @@ class Main {
 
   static async startApp() {
     //process.env.DEBUG = '*'
-    Utils.getLogger().verbose(`App [${defaultConfig.server.NAME}] is running on PID: ${process.pid}`, Main.name)
+    Utils.getLogger().verbose(`App [${defaultConfig.server.NAME} ${this.versionApp}] is running on PID: ${process.pid}`, Main.name)
     fetchMode();
     //valores por defecto.
     Main.server = await NestFactory.create(AppModule);
-    Main.getServer().use(bodyParser.json({ limit: defaultConfig.app.MAX_PAYLOAD }))
+    Main.getServer().use(bodyParser.json({ limit: defaultConfig.app.MAX_PAYLOAD }));
     Main.getServer().setGlobalPrefix(defaultConfig.app.PREFIX);
+
     Main.getServer().getHttpServer().once(`listening`, () => {
-      Utils.getLogger().verbose(`[ *** SERVER IS HANDLE ON PORT -> ${Main.port} ***] `, Main.name)
+      Utils.getLogger().verbose(`[ *** SERVER IS HANDLE ON PORT -> ${Main.port} *** ] `, Main.name)
     })
     Main.startServer()
     if (Utils.isDebug()) Utils.getLogger().debug(`[SERVER CONFIG] ${JSON.stringify(Main.getServer().getHttpServer())}`, Main.name)
@@ -33,6 +36,9 @@ class Main {
     // Se cargan establecen los valores precargados.
 
     Main.getServer().setGlobalPrefix(Main.getApiPrefix())
+    Main.getServer().getHttpServer().requestTimeout = 15000
+  
+    
     Main.serverMetadata = await Main.getServer().listen(Main.getPort())
   }
 
