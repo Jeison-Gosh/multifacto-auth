@@ -23,7 +23,6 @@ export class CodesService {
     public consumeCode(): string | null {
         const codeIterator = this.codes.values();
         const code = codeIterator.next().value;
-        
         if (code) {
             this.codes.delete(code);
             return code;

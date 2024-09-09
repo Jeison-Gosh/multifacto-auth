@@ -26,7 +26,7 @@ export class NetworkMiddleware implements NestMiddleware {
             next()
         } catch (error) {
             Utils.getLogger().error(`An error has been ocurred: ${error}`, NetworkMiddleware.name);
-            res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
+            return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
                 message: RESPONSE_MESSAGE.UNSUPPORTED
             })
         }

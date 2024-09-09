@@ -1,10 +1,9 @@
-import { Controller, Get, Post } from '@nestjs/common';
+import { Controller, Get, Post, Body, ValidationPipe } from '@nestjs/common';
 import { CodesService } from './codes.service';
 import { GenerateCodeResponseDto, ConsumeCodeResponseDto, GetAllCodesResponseDto } from './codes.dto';
 
 @Controller('codes')
 export class CodesController {
-
     constructor(
         private readonly codesService: CodesService,
     ) { }
@@ -16,7 +15,7 @@ export class CodesController {
     }
 
     @Post('consume')
-    consumeCode(): ConsumeCodeResponseDto {
+    consumeCode(@Body(new ValidationPipe({ whitelist: true })) dto: ConsumeCodeResponseDto): ConsumeCodeResponseDto {
         const code = this.codesService.consumeCode();
         return { code: code ? code : 'No more codes available' };
     }

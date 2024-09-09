@@ -25,7 +25,7 @@ export class TimeoutMiddleware implements NestMiddleware {
             Utils.getLogger().verbose(`[REQ] ${method} ${url}`, TimeoutMiddleware.name);
 
             const timeoutDuration: number = this.config.get<number>(`apiConfig.timeout`)
-            this.taskService.addTask('TimeoutRequestHandler', timeoutDuration, TIME_UNITS.MILLISECONDS, SCHEDULE_OPTION.TIMEOUT, () => {
+            this.taskService.addTask(`TimeoutRequestHandler`, timeoutDuration, TIME_UNITS.MILLISECONDS, SCHEDULE_OPTION.TIMEOUT, () => {
                 if (!res.headersSent) {
                     Utils.getLogger().warn(`ORIGIN: ${req.hostname} PATH: ${req.originalUrl}`, TimeoutMiddleware.name)
                     return res.status(HttpStatus.REQUEST_TIMEOUT).json({
@@ -34,14 +34,14 @@ export class TimeoutMiddleware implements NestMiddleware {
                 }
             })
             res.on('finish', () => {
-                this.taskService.deleteTask('TimeoutRequestHandler', SCHEDULE_OPTION.TIMEOUT)
+                this.taskService.deleteTask(`TimeoutRequestHandler`, SCHEDULE_OPTION.TIMEOUT)
                 const responseTime = Date.now() - now;
                 Utils.getLogger().verbose(`[RES] ${method} ${url} -- ${responseTime}ms`, TimeoutMiddleware.name);
             });
             next()
         } catch (error) {
             Utils.getLogger().error(`An error has been ocurred: ${error}`, TimeoutMiddleware.name);
-            res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
+            return res.status(HttpStatus.INTERNAL_SERVER_ERROR).json({
                 message: RESPONSE_MESSAGE.UNSUPPORTED
             })
         }
