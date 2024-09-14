@@ -10,7 +10,7 @@ export class HeadersMiddleware implements NestMiddleware {
     async use(req: Request, res: Response, next: NextFunction): Promise<any> {
         try {
             if (!req.header('Accept-Language') || !req.header('App') ) {
-                return res.status(HttpStatus.PRECONDITION_REQUIRED).json({
+                return res.status(HttpStatus.BAD_REQUEST).json({
                     message: RESPONSE_MESSAGE.INVALID_ENTRY
                 });
             }

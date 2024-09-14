@@ -1,4 +1,5 @@
 import { Injectable } from '@nestjs/common';
+import { codesBusinessRules } from './code.constants';
 
 @Injectable()
 export class CodesService {
@@ -16,9 +17,9 @@ export class CodesService {
         return code;
     }
     private generateCode(): string {
-        return Array.from({ length: 8 }, () => {
-            return Math.random().toString(36).charAt(2);
-        }).join('');
+        return Array.from({ length: codesBusinessRules.MAXIMUM_CODE_LENGTH }, () => {
+            return Math.floor(Math.random() * 10); 
+        }).join('');        
     }
     public consumeCode(): string | null {
         const codeIterator = this.codes.values();
